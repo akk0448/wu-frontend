@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Heading, Container, Center, HStack, Grid } from '@chakra-ui/react'
+import { Heading, Container, Center, Grid, Stack } from '@chakra-ui/react'
 import UtilityBox, { UtilityBoxProps } from '../components/UtilityBox'
 import MotionLogo from '../components/MotionLogo'
 
@@ -48,28 +48,37 @@ const Home: NextPage = () => {
 			<Head>
 				<title>Workbox Utilities - Technocrats</title>
 				<meta name="description" content="Workbox Utilities by Technocrats" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<Center>
-				<Container minWidth="container.xl" m={3} p={0}>
+				<Container minWidth="90%" bgColor={'blue.50'} m={3} p={0}>
 					<Center>
-						<HStack my={5} spacing={4}>
-							<MotionLogo
-								src="/logo/open-box-128.png"
-								alt="logo"
-								mr={6}
-								width={16}
-							/>
-							<Heading color="blue.500" fontSize={'4xl'}>
-								Workbox Utilities - Technocrats
-							</Heading>
-						</HStack>
+						<Stack direction={['column', 'row']} my={5} spacing={4}>
+							<Center>
+								<MotionLogo
+									src="/logo/open-box-128.png"
+									alt="logo"
+									mr={{ xs: 6, '2xl': 20 }}
+									width={16}
+								/>
+							</Center>
+							<Center>
+								<Heading
+									color="blue.500"
+									fontSize={['2xl', null, '3xl', '4xl']}
+								>
+									Workbox Utilities
+								</Heading>
+							</Center>
+						</Stack>
 					</Center>
 					<Grid
 						w="full"
-						templateColumns="repeat(2, 1fr)"
-						rowGap={100}
-						columnGap={200}
+						templateColumns={['repeat(1,1fr)', null, 'repeat(2, 1fr)']}
+						rowGap={[50, 50, 10, 20]}
+						columnGap={[0, 100, 10]}
 						mt={8}
+						px={4}
 					>
 						<UtilityBox
 							heading={conversionProps.heading}

@@ -17,7 +17,7 @@ const UtilityBox: React.FC<UtilityBoxProps> = ({ heading, utilities }) => {
 	return (
 		<Center>
 			<GridItem
-				w={'full'}
+				w={['full', '70%', 'full', '80%', '60%']}
 				h={'full'}
 				d="flex"
 				borderRadius={8}
@@ -26,7 +26,10 @@ const UtilityBox: React.FC<UtilityBoxProps> = ({ heading, utilities }) => {
 				bgColor={'darkgray'}
 				p={4}
 			>
-				<Heading fontSize="3xl" mb={6}>
+				<Heading
+					fontSize={['2xl', null, '2xl', '2xl', '3xl']}
+					mb={[6, null, null, null, null, 10]}
+				>
 					{heading}
 				</Heading>
 				{getAllUtilities(utilities)}

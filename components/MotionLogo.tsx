@@ -14,14 +14,14 @@ const MotionLogo: React.FC<MotionLogoProps> = () => {
 				duration: 1,
 				ease: 'easeInOut',
 				repeat: Infinity,
-				repeatDelay: 60,
+				repeatDelay: 20,
 			},
 		},
 	}
 
 	return (
 		<MotionImage
-			w={16}
+			w={[12, 10, null, 12, 14]}
 			whileInView="initial"
 			variants={variants}
 			alt="logo"

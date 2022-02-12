@@ -24,7 +24,12 @@ const UtilityButton: React.FC<UtilityButtonProps> = ({ utility }) => {
 
 	return (
 		<Link href={utility.linkTo} passHref>
-			<MotionButton whileHover="hover" variants={variants} mb={4}>
+			<MotionButton
+				whileHover="hover"
+				variants={variants}
+				mb={[4, null, null, null, null]}
+				fontSize={[null, null, 'sm', 'md']}
+			>
 				{utility.name}
 			</MotionButton>
 		</Link>
