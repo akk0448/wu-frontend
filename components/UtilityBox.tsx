@@ -17,7 +17,7 @@ const UtilityBox: React.FC<UtilityBoxProps> = ({ heading, utilities }) => {
 	return (
 		<Center>
 			<GridItem
-				w={['full', '70%', 'full', '80%', '60%']}
+				w={['90%', '70%', 'full', '80%', '60%']}
 				h={'full'}
 				d="flex"
 				borderRadius={8}
