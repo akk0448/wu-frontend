@@ -1,11 +1,5 @@
-import { Button, Center, GridItem, Heading } from '@chakra-ui/react'
-
-import Link from 'next/link'
-
-export interface IUtility {
-	name: string
-	linkTo: string
-}
+import { Center, GridItem, Heading } from '@chakra-ui/react'
+import UtilityButton, { IUtility } from './UtilityButton'
 
 export interface UtilityBoxProps {
 	heading: string
@@ -15,11 +9,7 @@ export interface UtilityBoxProps {
 const UtilityBox: React.FC<UtilityBoxProps> = ({ heading, utilities }) => {
 	const getAllUtilities = (utilities: IUtility[]) => {
 		const utilityComponents = utilities.map((utility, key) => {
-			return (
-				<Link href={utility.linkTo} passHref key={key}>
-					<Button mb={4}>{utility.name}</Button>
-				</Link>
-			)
+			return <UtilityButton utility={utility} key={key} />
 		})
 		return utilityComponents
 	}

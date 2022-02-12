@@ -1,14 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import {
-	Heading,
-	Container,
-	Center,
-	HStack,
-	Image,
-	Grid,
-} from '@chakra-ui/react'
+import { Heading, Container, Center, HStack, Grid } from '@chakra-ui/react'
 import UtilityBox, { UtilityBoxProps } from '../components/UtilityBox'
+import MotionLogo from '../components/MotionLogo'
 
 const Home: NextPage = () => {
 	const conversionProps: UtilityBoxProps = {
@@ -59,7 +53,7 @@ const Home: NextPage = () => {
 				<Container minWidth="container.xl" m={3} p={0}>
 					<Center>
 						<HStack my={5} spacing={4}>
-							<Image
+							<MotionLogo
 								src="/logo/open-box-128.png"
 								alt="logo"
 								mr={6}
