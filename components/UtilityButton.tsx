@@ -29,7 +29,7 @@ const UtilityButton: React.FC<UtilityButtonProps> = ({ utility }) => {
 				variants={variants}
 				mb={[4, null, null, null, null]}
 				fontSize={[null, null, 'sm', 'md']}
-				bg={'brand.tertiary.50'}
+				bg={'brand.tertiary.100'}
 			>
 				{utility.name}
 			</MotionButton>
