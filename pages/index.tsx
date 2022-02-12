@@ -18,18 +18,18 @@ const Home: NextPage = () => {
 	const jsonProps: UtilityBoxProps = {
 		heading: 'Json Utility',
 		utilities: [
-			{ name: 'Difference b/w Jsons', linkTo: '/json/difference' },
-			{ name: 'Add key to Jsons', linkTo: '/json/addkey' },
-			{ name: 'Remove key from Jsons', linkTo: '/json/removekey' },
+			{ name: 'Difference b/w JSONs', linkTo: '/json/difference' },
+			{ name: 'Add key to JSON', linkTo: '/json/addkey' },
+			{ name: 'Remove key from JSON', linkTo: '/json/removekey' },
 		],
 	}
 
 	const otherProps: UtilityBoxProps = {
 		heading: 'Other Utilities',
 		utilities: [
-			{ name: 'Date', linkTo: '/other/date' },
+			{ name: 'DATE', linkTo: '/other/date' },
 			{ name: 'SMS', linkTo: '/other/sms' },
-			{ name: 'Currency', linkTo: '/other/currency' },
+			{ name: 'CURRENCY', linkTo: '/other/currency' },
 		],
 	}
 
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<Center>
-				<Container minWidth="90%" bgColor={'blue.50'} m={3} p={0}>
+				<Container minW="100%" bgColor={'gray.50'} p={0}>
 					<Center>
 						<Stack direction={['column', 'row']} my={5} spacing={4}>
 							<Center>
@@ -77,7 +77,7 @@ const Home: NextPage = () => {
 						templateColumns={['repeat(1,1fr)', null, 'repeat(2, 1fr)']}
 						rowGap={[50, 50, 10, 20]}
 						columnGap={[0, 100, 10]}
-						mt={8}
+						my={8}
 						px={4}
 					>
 						<UtilityBox

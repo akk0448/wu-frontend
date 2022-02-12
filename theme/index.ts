@@ -1,5 +1,6 @@
 import { extendTheme } from '@chakra-ui/react'
 import breakPoints from './breakpoints'
+import brandColors from './colors'
 
 const theme = extendTheme({
 	styles: {
@@ -10,6 +11,9 @@ const theme = extendTheme({
 		},
 	},
 	breakPoints,
+	colors: {
+		brand: brandColors,
+	},
 })
 
 export default theme

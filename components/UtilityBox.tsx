@@ -23,7 +23,7 @@ const UtilityBox: React.FC<UtilityBoxProps> = ({ heading, utilities }) => {
 				borderRadius={8}
 				alignItems="center"
 				flexDirection="column"
-				bgColor={'darkgray'}
+				bgColor={'brand.secondary.400'}
 				p={4}
 			>
 				<Heading
