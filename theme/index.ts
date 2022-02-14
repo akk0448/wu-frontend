@@ -1,14 +1,11 @@
 import { extendTheme } from '@chakra-ui/react'
 import breakPoints from './breakpoints'
 import brandColors from './colors'
+import global from './globals'
 
 const theme = extendTheme({
 	styles: {
-		global: {
-			html: {
-				fontSize: '16px',
-			},
-		},
+		global,
 	},
 	breakPoints,
 	colors: {

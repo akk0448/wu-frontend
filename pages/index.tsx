@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Heading, Container, Center, Grid, Stack } from '@chakra-ui/react'
+import { Grid } from '@chakra-ui/react'
 import UtilityBox, { UtilityBoxProps } from '../components/UtilityBox'
-import MotionLogo from '../components/MotionLogo'
+import PageLayout from '../components/PageLayout'
 
 const Home: NextPage = () => {
 	const conversionProps: UtilityBoxProps = {
@@ -44,62 +43,22 @@ const Home: NextPage = () => {
 	}
 
 	return (
-		<div>
-			<Head>
-				<title>Workbox Utilities - Technocrats</title>
-				<meta name="description" content="Workbox Utilities by Technocrats" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-			</Head>
-			<Center>
-				<Container minW="100%" bgColor={'gray.50'} p={0}>
-					<Center>
-						<Stack direction={['column', 'row']} my={5} spacing={4}>
-							<Center>
-								<MotionLogo
-									src="/logo/open-box-128.png"
-									alt="logo"
-									mr={{ xs: 6, '2xl': 20 }}
-									width={16}
-								/>
-							</Center>
-							<Center>
-								<Heading
-									color="blue.500"
-									fontSize={['2xl', null, '3xl', '4xl']}
-								>
-									Workbox Utilities
-								</Heading>
-							</Center>
-						</Stack>
-					</Center>
-					<Grid
-						w="full"
-						templateColumns={['repeat(1,1fr)', null, 'repeat(2, 1fr)']}
-						rowGap={[50, 50, 10, 20]}
-						columnGap={[0, 100, 10]}
-						my={8}
-						px={4}
-					>
-						<UtilityBox
-							heading={conversionProps.heading}
-							utilities={conversionProps.utilities}
-						/>
-						<UtilityBox
-							heading={jsonProps.heading}
-							utilities={jsonProps.utilities}
-						/>
-						<UtilityBox
-							heading={otherProps.heading}
-							utilities={otherProps.utilities}
-						/>
-						<UtilityBox
-							heading={exportImportProps.heading}
-							utilities={exportImportProps.utilities}
-						/>
-					</Grid>
-				</Container>
-			</Center>
-		</div>
+		<PageLayout
+			title="Workbox Utilities - Technocrats"
+			desc="Utility for everyone"
+		>
+			<Grid
+				w="full"
+				templateColumns={['repeat(1,1fr)', null, 'repeat(2, 1fr)']}
+				rowGap={[50, 50, 10, 20]}
+				columnGap={[0, 100, 10]}
+			>
+				<UtilityBox {...conversionProps} />
+				<UtilityBox {...jsonProps} />
+				<UtilityBox {...otherProps} />
+				<UtilityBox {...exportImportProps} />
+			</Grid>
+		</PageLayout>
 	)
 }
 
