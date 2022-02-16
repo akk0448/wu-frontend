@@ -1,15 +1,94 @@
-import React from 'react'
+import { Grid, GridItem } from '@chakra-ui/react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import PageLayout from '../../components/PageLayout'
+import TextInput, { TextInputProps } from '../../components/TextInput'
+import TextPreview, { TextPreviewProps } from '../../components/TextPreview'
+import { jsonFormatter, xmlFormatter } from '../../utils/formatter.util'
 
-const Xml2json: React.FC = () => {
-	// eslint-disable-next-line react-hooks/rules-of-hooks
+const Xml2Json: React.FC = () => {
+	const [input, setInput] = useState('')
+	const [output, setOutput] = useState('')
+
+	const fetchRes = async (inp: string): Promise<string> => {
+		const res = await axios.post('/conversions/xml2json', inp, {
+			headers: {
+				'Content-Type': 'application/xml',
+				Acccept: '*/*',
+			},
+		})
+		return res.data
+	}
+
+	const conversionHandler = () => {
+		fetchRes(input).then((out) => {
+			console.log(out)
+			setOutput(jsonFormatter(out))
+		})
+	}
+
+	const fileUploadHandler = (e: any) => {
+		const file: File = e.target.files[0]
+		file.text().then((fileInputStr) => {
+			setInput(xmlFormatter(fileInputStr))
+		})
+		e.target.value = null
+		console.log(e.target.files)
+	}
+
+	const refreshHandler = () => {
+		setInput('')
+		setOutput('')
+	}
+
+	const textPreviewProps: TextPreviewProps = {
+		output: output,
+		outputType: 'json',
+		placeholder: 'JSON output',
+		setoutputfn: setOutput,
+		stackProps: {
+			w: '90%',
+			h: '100%',
+		},
+	}
+	const textInputProps: TextInputProps = {
+		input: input,
+		inputType: 'xml',
+		conversionHandlerFn: conversionHandler,
+		fileUploadHandlerFn: fileUploadHandler,
+		refreshHandlerFn: refreshHandler,
+		setInputFn: setInput,
+		stackProps: {
+			w: '90%',
+			h: '100%',
+		},
+	}
 
 	return (
 		<PageLayout
 			title="Workbox Utilities - XML to JSON"
 			desc="Utility to convert XML to JSON"
-		></PageLayout>
+		>
+			<Grid
+				m={[0, 4]}
+				minH={['800px', null, '400px', '500px']}
+				templateColumns={['repeat(1,1fr)', null, 'repeat(2,1fr)']}
+				rowGap={8}
+			>
+				<GridItem
+					d={'flex'}
+					flexDirection={'column'}
+					justifyContent={'center'}
+					alignItems={'center'}
+				>
+					<TextInput {...textInputProps} />
+				</GridItem>
+				<GridItem d={'flex'} alignItems={'center'} justifyContent={'center'}>
+					<TextPreview {...textPreviewProps} />
+				</GridItem>
+			</Grid>
+		</PageLayout>
 	)
 }
 
-export default Xml2json
+export default Xml2Json

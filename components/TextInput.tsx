@@ -17,6 +17,7 @@ export interface TextInputProps {
 	input: string
 	conversionHandlerFn: () => void
 	fileUploadHandlerFn: (e: any) => void
+	refreshHandlerFn: () => void
 	stackProps?: StackProps
 }
 
@@ -26,6 +27,7 @@ const TextInput: React.FC<TextInputProps> = ({
 	setInputFn,
 	conversionHandlerFn,
 	fileUploadHandlerFn,
+	refreshHandlerFn,
 	stackProps,
 }) => {
 	return (
@@ -51,7 +53,7 @@ const TextInput: React.FC<TextInputProps> = ({
 					Prettify
 				</Button>
 				<IconButton
-					onClick={() => setInputFn('')}
+					onClick={refreshHandlerFn}
 					icon={<MdRefresh />}
 					aria-label={'Refresh'}
 				/>

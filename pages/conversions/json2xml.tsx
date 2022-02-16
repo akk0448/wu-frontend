@@ -9,7 +9,7 @@ import { jsonFormatter, xmlFormatter } from '../../utils/formatter.util'
 
 export interface JsonToXmlProps {}
 
-const Json2xml: React.FC<JsonToXmlProps> = () => {
+const Json2Xml: React.FC<JsonToXmlProps> = () => {
 	const [output, setOutput] = useState('')
 	const [input, setInput] = useState('')
 
@@ -23,19 +23,22 @@ const Json2xml: React.FC<JsonToXmlProps> = () => {
 		return res.data
 	}
 
+	const refreshHandler = () => {
+		setInput('')
+		setOutput('')
+	}
+
 	const conversionHandler = () => {
 		fetchRes(input).then((out) => setOutput(xmlFormatter(out)))
 	}
 
 	const fileUploadHandler = (e: any) => {
-		if (e.target.files.length > 1) {
-			alert('max one file can be uploaded')
-			return
-		}
 		const file: File = e.target.files[0]
 		file.text().then((fileInputStr) => {
 			setInput(jsonFormatter(fileInputStr))
 		})
+		e.target.value = null
+		console.log(e.target.files)
 	}
 
 	const textInputProps: TextInputProps = {
@@ -44,6 +47,7 @@ const Json2xml: React.FC<JsonToXmlProps> = () => {
 		setInputFn: setInput,
 		conversionHandlerFn: conversionHandler,
 		fileUploadHandlerFn: fileUploadHandler,
+		refreshHandlerFn: refreshHandler,
 		stackProps: {
 			w: '90%',
 			h: '100%',
@@ -88,4 +92,4 @@ const Json2xml: React.FC<JsonToXmlProps> = () => {
 	)
 }
 
-export default Json2xml
+export default Json2Xml

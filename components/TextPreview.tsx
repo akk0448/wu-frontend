@@ -69,7 +69,9 @@ const TextPreview: React.FC<TextPreviewProps> = ({
 						}}
 					/>
 				)}
-				<Button onClick={prettifyOutput}>Prettify</Button>
+				<Button onClick={prettifyOutput} disabled={output === ''}>
+					Prettify
+				</Button>
 				<IconButton
 					icon={<MdDownload />}
 					aria-label={'Downlod Button'}
