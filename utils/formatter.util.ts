@@ -1,7 +1,7 @@
 import xmlFormatterFromPackage from 'xml-formatter'
 
 export const jsonFormatter = (out: string) => {
-	return JSON.stringify(out, null, 4)
+	return JSON.stringify(JSON.parse(out), null, 4)
 }
 
 export const xmlFormatter = xmlFormatterFromPackage

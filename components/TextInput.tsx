@@ -9,10 +9,10 @@ import {
 } from '@chakra-ui/react'
 import React from 'react'
 import { MdRefresh, MdUpload } from 'react-icons/md'
-import { jsonFormatter } from '../utils/formatter.util'
+import { formatterMap } from '../utils/formatter.util'
 
 export interface TextInputProps {
-	inputType: string
+	inputType: 'xml' | 'json'
 	setInputFn: React.Dispatch<React.SetStateAction<string>>
 	input: string
 	conversionHandlerFn: () => void
@@ -30,6 +30,11 @@ const TextInput: React.FC<TextInputProps> = ({
 	refreshHandlerFn,
 	stackProps,
 }) => {
+	const prettifyInput = () => {
+		const formattedInput = formatterMap[inputType](input)
+		setInputFn(formattedInput)
+	}
+
 	return (
 		<VStack {...stackProps} spacing={4}>
 			<Heading color={'brand.secondary.500'}>Input</Heading>
@@ -41,15 +46,11 @@ const TextInput: React.FC<TextInputProps> = ({
 				value={input}
 				onChange={(e) => setInputFn(e.target.value)}
 			/>
-
 			<ButtonGroup>
 				<Button onClick={conversionHandlerFn} disabled={input.trim() === ''}>
 					Convert
 				</Button>
-				<Button
-					onClick={() => setInputFn((old) => jsonFormatter(old))}
-					disabled={input === ''}
-				>
+				<Button onClick={prettifyInput} disabled={input === ''}>
 					Prettify
 				</Button>
 				<IconButton

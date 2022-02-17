@@ -58,7 +58,7 @@ const Json2Xml: React.FC<JsonToXmlProps> = () => {
 		output,
 		outputType: 'xml',
 		placeholder: `XML output`,
-		setoutputfn: setOutput,
+		setOutputFn: setOutput,
 		stackProps: {
 			w: '90%',
 			h: '100%',

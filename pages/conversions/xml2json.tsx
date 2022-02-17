@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import PageLayout from '../../components/PageLayout'
 import TextInput, { TextInputProps } from '../../components/TextInput'
 import TextPreview, { TextPreviewProps } from '../../components/TextPreview'
-import { jsonFormatter, xmlFormatter } from '../../utils/formatter.util'
+import { xmlFormatter } from '../../utils/formatter.util'
 
 const Xml2Json: React.FC = () => {
 	const [input, setInput] = useState('')
@@ -14,7 +14,6 @@ const Xml2Json: React.FC = () => {
 		const res = await axios.post('/conversions/xml2json', inp, {
 			headers: {
 				'Content-Type': 'application/xml',
-				Acccept: '*/*',
 			},
 		})
 		return res.data
@@ -22,8 +21,7 @@ const Xml2Json: React.FC = () => {
 
 	const conversionHandler = () => {
 		fetchRes(input).then((out) => {
-			console.log(out)
-			setOutput(jsonFormatter(out))
+			setOutput(JSON.stringify(out, null, 4))
 		})
 	}
 
@@ -33,7 +31,6 @@ const Xml2Json: React.FC = () => {
 			setInput(xmlFormatter(fileInputStr))
 		})
 		e.target.value = null
-		console.log(e.target.files)
 	}
 
 	const refreshHandler = () => {
@@ -45,7 +42,7 @@ const Xml2Json: React.FC = () => {
 		output: output,
 		outputType: 'json',
 		placeholder: 'JSON output',
-		setoutputfn: setOutput,
+		setOutputFn: setOutput,
 		stackProps: {
 			w: '90%',
 			h: '100%',

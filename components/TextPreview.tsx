@@ -17,7 +17,7 @@ export interface TextPreviewProps {
 	output: string
 	outputType: 'xml' | 'json'
 	placeholder: string
-	setoutputfn: React.Dispatch<React.SetStateAction<string>>
+	setOutputFn: React.Dispatch<React.SetStateAction<string>>
 	stackProps?: StackProps
 }
 
@@ -25,14 +25,14 @@ const TextPreview: React.FC<TextPreviewProps> = ({
 	output,
 	outputType,
 	placeholder,
-	setoutputfn,
+	setOutputFn,
 	stackProps,
 }) => {
 	const [readonly, setReadonly] = useState(true)
 
 	const prettifyOutput = () => {
 		const formattedOutput = formatterMap[outputType](output)
-		setoutputfn(formattedOutput)
+		setOutputFn(formattedOutput)
 	}
 
 	const downloadOutputFile = () => {
@@ -46,7 +46,7 @@ const TextPreview: React.FC<TextPreviewProps> = ({
 				flex={1}
 				bg={'blackAlpha.800'}
 				color={'whiteAlpha.800'}
-				onChange={(e) => setoutputfn(e.target.value)}
+				onChange={(e) => setOutputFn(e.target.value)}
 				readOnly={readonly}
 				value={output}
 				placeholder={placeholder}
