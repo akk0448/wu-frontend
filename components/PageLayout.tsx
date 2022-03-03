@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
 import Head from 'next/head'
 import React from 'react'
 import Header from './Header'
@@ -16,9 +16,19 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children, title, desc }) => {
 				<meta name="description" content={desc} />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Container minW="100vw" minH="100vh" bgColor={'gray.50'} px={3}>
+			<Container
+				p={'0'}
+				minW="100vw"
+				minH="100vh"
+				bgColor={'gray.50'}
+				d={'flex'}
+				alignItems={'center'}
+				flexDirection={'column'}
+			>
 				<Header />
-				{children}
+				<Box w={'90%'} my={'6'}>
+					{children}
+				</Box>
 			</Container>
 		</>
 	)

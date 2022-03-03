@@ -71,7 +71,6 @@ const Json2Xml: React.FC<JsonToXmlProps> = () => {
 			desc="Utility to convert JSON to XML"
 		>
 			<Grid
-				m={[0, 4]}
 				minH={['800px', null, '400px', '500px']}
 				templateColumns={['repeat(1,1fr)', null, 'repeat(2,1fr)']}
 				rowGap={8}
