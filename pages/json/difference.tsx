@@ -33,7 +33,7 @@ const Difference: React.FC = () => {
 
 	const differenceHandler = () => {
 		fetchRes(input).then((op: string) => {
-			const res = op.split(':')
+			const res = op.split('|')
 			let out = ''
 			for (let s of res) {
 				out += `${s.trim()}\n`

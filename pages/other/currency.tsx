@@ -21,6 +21,7 @@ const curFetcher = async () => {
 	const res = await axios.get<{ [key: string]: string }>(
 		'/other-utilities/available-conversion'
 	)
+	console.log(res)
 	if (res !== null)
 		Object.entries(res.data).map((entry) => {
 			currencies.push(entry)
