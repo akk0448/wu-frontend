@@ -5,10 +5,10 @@ import theme from '../theme'
 import axios from 'axios'
 
 function MyApp({ Component, pageProps }: AppProps) {
-	axios.defaults.baseURL =
+	axios.defaults.baseURL = 
 		process.env.NODE_ENV === 'development'
 			? 'http://localhost:8080/'
-			: 'https://workbox-utilities.herokuapp.com/'
+			: 'https://workbox-utilities-inkathon.herokuapp.com/'
 
 	return (
 		<ChakraProvider resetCSS theme={theme}>
